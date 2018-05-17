@@ -1,0 +1,35 @@
+{% extends 'HardwareManagment/base.html' %}
+
+{% block title %}Mitsuba{% endblock %}
+
+{% block content %}
+<div class="jumbotron container" style="background-color: #080d0a;">
+	<h1 class="text-center" style="color: white">Mitsuba: Mantenimiento de hardware.</h1>
+</div>
+
+<div class="container">
+<div class="row">
+	<div class="col-sm">
+		
+			<div class="card-header" style="background-color: black; color: white;">
+				Reportes
+			</div>
+			<br><br>
+			<div class="card-body row">
+				<a href="{% url 'maintenance' %}" class="btn-primary btn col-sm">Mantenimientos</a>
+				<div class="col-sm"></div>
+				<a href="{% url 'users' %}" class="btn-primary btn col-sm">Usuarios</a>
+				<div class="col-sm"></div>
+				<a href="{% url 'hardware' %}" class="btn-primary btn col-sm">Equipos</a>
+				<div class="col-sm"></div>
+				<a href="{% url 'ventors' %}" class="btn-primary btn col-sm">Proveedores</a>
+			
+			</div>
+		
+	</div>
+</div>
+</div>
+
+
+
+{% endblock %}
