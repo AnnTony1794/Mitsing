@@ -7,9 +7,12 @@ from django.conf import settings
 class HomeView(TemplateView):
     template_name = "HardwareManagment/home.html"
 
-    
+
 class MaintenanceView(TemplateView):
 	template_name = "HardwareManagment/maintenance.html"
+    
+class PrintView(TemplateView):
+	template_name = "HardwareManagment/print.html"
 
 
 class UsersView(TemplateView):
@@ -23,3 +26,6 @@ class HardwareView(TemplateView):
 class VentorsView(TemplateView):
 	template_name = "HardwareManagment/ventors.html"
 
+
+class PdfView(TemplateView):
+	template_name = "HardwareManagment/pdf.html"

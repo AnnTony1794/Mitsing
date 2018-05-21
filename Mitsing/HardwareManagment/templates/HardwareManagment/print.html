@@ -1,0 +1,54 @@
+{% extends 'HardwareManagment/base.html' %}
+
+{% block title %}Imprimir{% endblock %}
+
+{% block content %}
+
+	<div class="row">	
+		<div class="col-1"></div>
+		<div class="col-3">
+			<div class="card" >
+				<div class="card-header" style="background-color: black; color: white">
+					Filtros
+				</div>
+				<div class="card-body">
+					{% include 'HardwareManagment/filters.html' %}
+				</div>
+			</div>
+		</div>
+		<div class="col-7">
+			<div class="card">
+				<div class="card-header" style="background-color: black; color: white">
+					Mantenimientos
+				</div>
+				<div class="card-body" style="background-color: white">
+					<table class="table card-text">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Hardware</th>
+								<th>Fecha programada</th>
+								<th>Fecha real</th>
+								<th>Imprimir</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for reg in employees %}
+							<tr>
+								<td>{{reg.name}}</td>
+								<td>{{reg.hardware.get.name}}</td>
+								<td>{{reg.badge}}</td>
+								<td>{{reg.department}}</td>
+								<td><a href="{% url 'pdf' reg.id %}" target="_black" class="btn btn-primary">Imprimir</a></td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+	
+
+{% endblock %}

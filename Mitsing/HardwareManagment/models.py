@@ -7,6 +7,8 @@ class Vendor(models.Model):
     email = models.EmailField(null=True)
     phone = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.name
 
 class Hardware(models.Model):
     name = models.CharField(max_length=50)
@@ -23,6 +25,9 @@ class Hardware(models.Model):
     office_software = models.CharField(max_length=50)
     antivirus_software = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
 
 class Bills(models.Model):
     vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, null=True)
@@ -30,9 +35,14 @@ class Bills(models.Model):
     create = models.DateField()
     arrive = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
+
 class Department(models.Model):
     name = models.CharField(max_length=100, primary_key=True)
 
+    def __str__(self):
+        return self.name
 
 class Employee(models.Model):
     name = models.CharField(max_length=50)
@@ -41,9 +51,15 @@ class Employee(models.Model):
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
     hardware = models.ManyToManyField(Hardware)
 
+    def __str__(self):
+        return self.name
+
 
 class Maintenance(models.Model):
     hardware = models.ForeignKey(Hardware, on_delete=models.SET_NULL, null=True, blank=True)
     schedule_date = models.DateField()
     made_date = models.DateField()
     employee_in_chage = models.ForeignKey(Employee, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name

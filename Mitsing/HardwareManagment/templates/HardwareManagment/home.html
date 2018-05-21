@@ -10,12 +10,13 @@
 <div class="container">
 <div class="row">
 	<div class="col-sm">
-		
 			<div class="card-header" style="background-color: black; color: white;">
 				Reportes
 			</div>
 			<br><br>
 			<div class="card-body row">
+				<a href="{% url 'print' %}" class="btn-primary btn col-sm">Imprimir</a>
+				<div class="col-sm"></div>
 				<a href="{% url 'maintenance' %}" class="btn-primary btn col-sm">Mantenimientos</a>
 				<div class="col-sm"></div>
 				<a href="{% url 'users' %}" class="btn-primary btn col-sm">Usuarios</a>
@@ -23,13 +24,9 @@
 				<a href="{% url 'hardware' %}" class="btn-primary btn col-sm">Equipos</a>
 				<div class="col-sm"></div>
 				<a href="{% url 'ventors' %}" class="btn-primary btn col-sm">Proveedores</a>
-			
 			</div>
 		
 	</div>
 </div>
 </div>
-
-
-
 {% endblock %}
