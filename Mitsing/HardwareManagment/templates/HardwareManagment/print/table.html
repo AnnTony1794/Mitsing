@@ -1,0 +1,12 @@
+{% for reg in filter.qs reversed %}
+	{% if reg.made_date is not None and reg.hardware.employee_set.filter.get.name != "" %}	
+		<tr>
+			<td>{{reg.hardware.employee_set.filter.get.name}}</td>
+			<td>{{reg.hardware.name}}</td>
+			<td>{{reg.schedule_date}}</td>
+			<td>{{reg.made_date}}</td>
+			<td><a href="{% url 'Home:pdf' reg.id %}" target="_blanck" class="btn btn-primary">Imprimir</a></td>
+		</tr>
+	{% endif %}
+{% endfor %}
+

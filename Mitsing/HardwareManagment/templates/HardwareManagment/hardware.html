@@ -1,13 +1,62 @@
 {% extends 'HardwareManagment/base.html' %}
 
-{% block title %}Hardware{% endblock %}
+{% block title %}Imprimir{% endblock %}
 
 {% block content %}
 
-	<div class="container" style="background-color: white">
-		<div class="row">
-			<div class="col-4">Contenido del col-4</div>
-			<div class="col-7 offset-1">Contenido del col-7</div>
+<div class="row">	
+		<div class="col-1"></div>
+		<div class="col-3">
+			<div class="card" >
+				<div class="card-header" style="background-color: black; color: white">
+					Filtros
+				</div>
+				<div class="card-body">
+					{% include 'HardwareManagment/print/filters.html' %}
+				</div>
+			</div>
+		</div>
+		<div class="col-7">
+			<div class="card">
+				<div class="card-header" style="background-color: black; color: white">
+					Usuarios
+					<a href="{% url 'admin:HardwareManagment_hardware_add' %}" class="btn btn-primary" style="color: white; margin-left: 80%;">Agregar</a>
+				</div>
+				<div class="card-body" style="background-color: white">
+					<table class="table table-striped card-text">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Typo</th>
+								<th>Modelo</th>
+								<th>Acceso a red</th>
+								<th>Editar</th>
+								<th>Eliminar</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tbody>
+							{% for reg in filter.qs reversed %}
+								{% if reg.made_date is None %}	
+									<tr>
+										<td>{{reg.name}}</td>
+										<td>{{reg.type_of_hardware}}</td>
+										<td>{{reg.model}}</td>
+										<td>{% if reg.net_access %}
+												Sí
+											{% else %}
+												No
+											{% endif %}
+										</td>
+										<td><a href="{% url 'admin:HardwareManagment_hardware_change' reg.id %}" class="btn btn-primary">Editar</a></td>
+										<td><a href="{% url 'admin:HardwareManagment_hardware_delete' reg.id %}" class="btn btn-danger">Eliminar</a></td>
+								{% endif %}
+							{% endfor %}
+						</tbody>
+						</tbody>
+					</table>
+				</div>	
+			</div>
 		</div>
 	</div>
 

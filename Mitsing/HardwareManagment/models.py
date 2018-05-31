@@ -36,7 +36,7 @@ class Bills(models.Model):
     arrive = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return str(self.id)
 
 class Department(models.Model):
     name = models.CharField(max_length=100, primary_key=True)
@@ -51,6 +51,7 @@ class Employee(models.Model):
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
     hardware = models.ManyToManyField(Hardware)
 
+    context_object_name = 'employee_list'
     def __str__(self):
         return self.name
 
@@ -58,8 +59,10 @@ class Employee(models.Model):
 class Maintenance(models.Model):
     hardware = models.ForeignKey(Hardware, on_delete=models.SET_NULL, null=True, blank=True)
     schedule_date = models.DateField()
-    made_date = models.DateField()
+    made_date = models.DateField(null=True, blank=True)
     employee_in_chage = models.ForeignKey(Employee, on_delete=models.CASCADE)
 
+
+    context_object_name = 'maintenance_list'
     def __str__(self):
-        return self.name
+        return str(self.id)

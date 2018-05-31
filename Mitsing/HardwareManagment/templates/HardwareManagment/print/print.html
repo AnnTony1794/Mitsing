@@ -19,31 +19,21 @@
 		<div class="col-7">
 			<div class="card">
 				<div class="card-header" style="background-color: black; color: white">
-					Usuarios
-					<a href="{% url 'admin:HardwareManagment_vendor_add' %}" class="btn btn-primary" style="color: white; margin-left: 72%;">Agregar</a>
+					Mantenimientos
 				</div>
 				<div class="card-body" style="background-color: white">
 					<table class="table table-striped card-text">
 						<thead>
 							<tr>
 								<th>Nombre</th>
-								<th>Email</th>
-								<th>Telefono</th>
+								<th>Hardware</th>
+								<th>Fecha programada</th>
+								<th>Fecha real</th>
+								<th>Imprimir</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tbody>
-							{% for reg in filter.qs reversed %}
-								{% if reg.made_date is None %}	
-									<tr>
-										<td>{{reg.name}}</td>
-										<td>{{reg.email}}</td>
-										<td>{{reg.phone}}</td>
-										<td><a href="{% url 'admin:HardwareManagment_vendor_change' reg.id %}" class="btn btn-primary">Editar</a></td>
-										<td><a href="{% url 'admin:HardwareManagment_vendor_delete' reg.id %}" class="btn btn-danger">Eliminar</a></td>
-								{% endif %}
-							{% endfor %}
-						</tbody>
+							{% include 'HardwareManagment/print/table.html' %}
 						</tbody>
 					</table>
 				</div>	
