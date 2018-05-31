@@ -1,12 +1,63 @@
 {% extends 'HardwareManagment/base.html' %}
 
-{% block title %}Users{% endblock %}
+{% block title %}Imprimir{% endblock %}
 
 {% block content %}
-	<div class="container" style="background-color: white">
-		<div class="row">
-			<div class="col-4">Contenido del col-4</div>
-			<div class="col-7 offset-1">Contenido del col-7</div>
+
+<div class="row">	
+		<div class="col-1"></div>
+		<div class="col-3">
+			<div class="card" >
+				<div class="card-header" style="background-color: black; color: white">
+					Filtros
+				</div>
+				<div class="card-body">
+					{% include 'HardwareManagment/print/filters.html' %}
+				</div>
+			</div>
+		</div>
+		<div class="col-7">
+			<div class="card">
+				<div class="card-header" style="background-color: black; color: white">
+					Usuarios
+					<a href="{% url 'admin:HardwareManagment_employee_add' %}" class="btn btn-primary" style="color: white; margin-left: 80%;">Agregar</a>
+				</div>
+				<div class="card-body" style="background-color: white">
+					<table class="table table-striped card-text">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Gafette</th>
+								<th>Departamento</th>
+								<th>Hardware</th>
+								<th>Editar</th>
+								<th>Eliminar</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tbody>
+							{% for reg in filter.qs reversed %}
+								{% if reg.made_date is None %}	
+									<tr>
+										<td>{{reg.name}}</td>
+										<td>{{reg.badge}}</td>
+										<td>{{reg.department}}</td>
+										<td>
+											{% for hw in reg.hardware.filter %}
+												{{hw.name}}<br>
+											{% endfor %}
+										</td>
+										<td><a href="{% url 'admin:HardwareManagment_employee_change' reg.id %}" class="btn btn-primary">Editar</a></td>
+										<td><a href="{% url 'admin:HardwareManagment_employee_delete' reg.id %}" class="btn btn-danger">Eliminar</a></td>
+									</tr>
+								{% endif %}
+							{% endfor %}
+						</tbody>
+						</tbody>
+					</table>
+				</div>	
+			</div>
 		</div>
 	</div>
+
 {% endblock %}

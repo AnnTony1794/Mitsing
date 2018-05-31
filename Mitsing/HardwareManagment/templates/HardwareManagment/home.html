@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="jumbotron container" style="background-color: #080d0a;">
-	<h1 class="text-center" style="color: white">Mitsuba: Mantenimiento de hardware.</h1>
+	<h1 class="text-center" style="color: white">MITSUBA: Mantenimiento de hardware.</h1>
 </div>
 
 <div class="container">
@@ -15,15 +15,15 @@
 			</div>
 			<br><br>
 			<div class="card-body row">
-				<a href="{% url 'print' %}" class="btn-primary btn col-sm">Imprimir</a>
+				<a href="{% url 'Home:print' %}" class="btn-primary btn col-sm">Imprimir</a>
 				<div class="col-sm"></div>
-				<a href="{% url 'maintenance' %}" class="btn-primary btn col-sm">Mantenimientos</a>
+				<a href="{% url 'Home:maintenance' %}" class="btn-primary btn col-sm">Mantenimientos</a>
 				<div class="col-sm"></div>
-				<a href="{% url 'users' %}" class="btn-primary btn col-sm">Usuarios</a>
+				<a href="{% url 'Home:users' %}" class="btn-primary btn col-sm">Usuarios</a>
 				<div class="col-sm"></div>
-				<a href="{% url 'hardware' %}" class="btn-primary btn col-sm">Equipos</a>
+				<a href="{% url 'Home:hardware' %}" class="btn-primary btn col-sm">Equipos</a>
 				<div class="col-sm"></div>
-				<a href="{% url 'ventors' %}" class="btn-primary btn col-sm">Proveedores</a>
+				<a href="{% url 'Home:ventors' %}" class="btn-primary btn col-sm">Proveedores</a>
 			</div>
 		
 	</div>

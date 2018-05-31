@@ -4,11 +4,59 @@
 
 {% block content %}
 
-	<div class="container" style="background-color: white">
-		<div class="row">
-			<div class="col-4">Contenido del col-4</div>
-			<div class="col-7 offset-1">Contenido del col-7</div>
+	<div class="row">	
+		<div class="col-1"></div>
+		<div class="col-3">
+			<div class="card" >
+				<div class="card-header" style="background-color: black; color: white">
+					Filtros
+				</div>
+				<div class="card-body">
+					{% include 'HardwareManagment/print/filters.html' %}
+				</div>
+			</div>
+		</div>
+		<div class="col-7">
+			<div class="card">
+				<div class="card-header" style="background-color: black; color: white">
+					Mantenimientos
+					<a href="{% url 'admin:HardwareManagment_maintenance_add' %}" class="btn btn-primary" style="color: white; margin-left: 72%;">Agregar</a>
+				</div>
+				<div class="card-body" style="background-color: white">
+					<table class="table table-striped card-text">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Hardware</th>
+								<th>Fecha programada</th>
+								<th>Encargado</th>
+								<th>Correo</th>
+								<th>Editar</th>
+								<th>Eliminar</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for reg in filter.qs reversed %}
+								{% if reg.made_date is None %}	
+									<tr>
+										<td>{{reg.hardware.employee_set.filter.get.name}}</td>
+										<td>{{reg.hardware.name}}</td>
+										<td>{{reg.schedule_date}}</td>
+										<td>{{reg.employee_in_chage}}</td>
+										{% if reg.hardware.employee_set.filter.get.email != null %}
+											<td><a href="#" class="btn btn-primary">Enviar</a></td>
+										{% else %}
+											<td>Sin correo</td>
+										{% endif %}
+										<td><a href="{% url 'admin:HardwareManagment_maintenance_change' reg.id %}" class="btn btn-primary">Editar</a></td>
+										<td><a href="{% url 'admin:HardwareManagment_maintenance_delete' reg.id %}" class="btn btn-danger">Eliminar</a></td>
+									</tr>
+								{% endif %}
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>	
+			</div>
 		</div>
 	</div>
-
 {% endblock %}
