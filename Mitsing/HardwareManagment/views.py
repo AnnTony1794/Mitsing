@@ -35,10 +35,10 @@ class HardwareView(FilterView):
 	template_name = "HardwareManagment/hardware.html"
 
 
-class VentorsView(FilterView):
+class VendorsView(FilterView):
 	model = Vendor
 	filterset_class = VendorFilter
-	template_name = "HardwareManagment/ventors.html"
+	template_name = "HardwareManagment/vendors.html"
 
 
 class PdfView(DetailView):

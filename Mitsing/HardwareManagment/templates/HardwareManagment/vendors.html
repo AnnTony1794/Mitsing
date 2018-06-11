@@ -20,18 +20,15 @@
 			<div class="card">
 				<div class="card-header" style="background-color: black; color: white">
 					Usuarios
-					<a href="{% url 'admin:HardwareManagment_employee_add' %}" class="btn btn-primary" style="color: white; margin-left: 80%;">Agregar</a>
+					<a href="{% url 'admin:HardwareManagment_vendor_add' %}" class="btn btn-primary" style="color: white; margin-left: 72%;">Agregar</a>
 				</div>
 				<div class="card-body" style="background-color: white">
 					<table class="table table-striped card-text">
 						<thead>
 							<tr>
 								<th>Nombre</th>
-								<th>Gafette</th>
-								<th>Departamento</th>
-								<th>Hardware</th>
-								<th>Editar</th>
-								<th>Eliminar</th>
+								<th>Email</th>
+								<th>Telefono</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -40,18 +37,10 @@
 								{% if reg.made_date is None %}	
 									<tr>
 										<td>{{reg.name}}</td>
-										<td>{{reg.badge}}</td>
-										<td>{{reg.department}}</td>
-										<td>
-											<select>
-											{% for hw in reg.hardware.filter %}
-												<option>{{hw.name}}</option>
-											{% endfor %}
-											</select>
-										</td>
-										<td><a href="{% url 'admin:HardwareManagment_employee_change' reg.id %}" class="btn btn-primary">Editar</a></td>
-										<td><a href="{% url 'admin:HardwareManagment_employee_delete' reg.id %}" class="btn btn-danger">Eliminar</a></td>
-									</tr>
+										<td>{{reg.email}}</td>
+										<td>{{reg.phone}}</td>
+										<td><a href="{% url 'admin:HardwareManagment_vendor_change' reg.id %}" class="btn btn-primary">Editar</a></td>
+										<td><a href="{% url 'admin:HardwareManagment_vendor_delete' reg.id %}" class="btn btn-danger">Eliminar</a></td>
 								{% endif %}
 							{% endfor %}
 						</tbody>

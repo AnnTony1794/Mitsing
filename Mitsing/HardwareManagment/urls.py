@@ -11,6 +11,6 @@ urlpatterns = [
     path('maintenance/', MaintenanceView.as_view(), name='maintenance'),
     path('users/', UsersView.as_view(), name='users'),
     path('hardware/', HardwareView.as_view(), name='hardware'),
-    path('ventors/', VentorsView.as_view(), name='ventors'),
+    path('vendors/', VendorsView.as_view(), name='vendors'),
     path('pdf/<int:pk>', PdfView.as_view(), name='pdf')
 ]
